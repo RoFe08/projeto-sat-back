@@ -15,22 +15,18 @@ public class LibraryService {
     LibraryRepository libraryRepository;
 
     public void createItem(Library item) {
-        var newItem = new Library();
-        newItem.setName(item.getName());
-        newItem.setDescription(item.getDescription());
-        newItem.setCategory(item.getCategory());
-        libraryRepository.createItem(newItem.getName(), newItem.getDescription(), newItem.getCategory());
+        libraryRepository.createItem(item.getId(), item.getName(), item.getDescription(), item.getCategory());
     }
 
-    public void putItem(Library item, Long id) {
-        libraryRepository.putItem(item.getName(), item.getDescription(), item.getCategory(), id);
+    public void putItem(String id, Library item) {
+        libraryRepository.putItem(id, item.getName(), item.getDescription(), item.getCategory());
     }
 
     public List<Library> getItems() {
         return libraryRepository.findAll();
     }
 
-    public void deleteItem(Long id) {
+    public void deleteItem(String id) {
         libraryRepository.deleteItem(id);
     }
 }

@@ -16,7 +16,7 @@ public class Library implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	private String name;
 	private String description;
 	private String category;
@@ -25,7 +25,7 @@ public class Library implements Serializable {
 		
 	}
 
-	public Library(Long id, String name, String description, String category) {
+	public Library(String id, String name, String description, String category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -33,11 +33,11 @@ public class Library implements Serializable {
 		this.category = category;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
