@@ -18,7 +18,7 @@ public interface LibraryRepository extends JpaRepository<Library, String> {
 	@Modifying
 	@Transactional
 	@Query(value = """
-			INSERT INTO biblioteca (id, name, description, category)
+			INSERT INTO tasks (id, name, description, category)
 			VALUES (:id, :name, :description, :category);
 			""", nativeQuery=true)
 	public void createItem(String id, String name, String description, String category);
@@ -26,19 +26,19 @@ public interface LibraryRepository extends JpaRepository<Library, String> {
 	@Modifying
 	@Transactional
 	@Query(value = """
-			DELETE FROM biblioteca WHERE id = :id
+			DELETE FROM tasks WHERE id = :id
 			""", nativeQuery = true)
 	public void deleteItem(String id);
 	
 	@Query(value = """
-			SELECT * FROM biblioteca
+			SELECT * FROM tasks
 			""", nativeQuery = true)
 	public List<Library> findAll();
 	
 	@Modifying
 	@Transactional
 	@Query(value = """
-		UPDATE biblioteca SET name = :name, description = :description, category = :category WHERE id = :id
+		UPDATE tasks SET name = :name, description = :description, category = :category WHERE id = :id
 			""", nativeQuery=true)
 	public void putItem (String id, String name, String description, String category);
 	
